@@ -18,6 +18,11 @@ import org.apache.storm.kafka.bolt.selector.DefaultTopicSelector;
 import org.apache.storm.LocalCluster;
 import org.apache.storm.generated.InvalidTopologyException;
 import org.apache.storm.thrift.TException;
+import org.apache.kafka.common.serialization.ByteBufferDeserializer;
+import org.apache.kafka.clients.consumer.ConsumerConfig;
+import com.kafkastuff.wordcount.splitter;
+
+
 
 
 public class App 
@@ -33,14 +38,21 @@ public class App
 	System.out.println("Config given for Spout");
 	final TopologyBuilder tp = new TopologyBuilder();
 	System.out.println("Empty Topology created");
-	KafkaSpoutConfig<String,String> kafkaSpoutConfig = KafkaSpoutConfig.builder("localhost:9092","testTopic").build();
+	KafkaSpoutConfig<String,String> kafkaSpoutConfig = KafkaSpoutConfig.builder("localhost:9092","testTopic")
+	.setProp(ConsumerConfig.KEY_DESERIALIZER_CLASS_CONFIG, ByteBufferDeserializer.class)
+	.setProp(ConsumerConfig.VALUE_DESERIALIZER_CLASS_CONFIG, ByteBufferDeserializer.class)
+	.setProp(ConsumerConfig.GROUP_ID_CONFIG, "kafka_spout-" + UUID.randomUUID().toString())
+	.build();
 	KafkaSpout<String,String> kafkaSpoutInput = new KafkaSpout<>(kafkaSpoutConfig);
+	
+
 	tp.setSpout("kafka_spout",kafkaSpoutInput, 1);
+	tp.setBolt("sentence-splitter", new splitter(), 1).shuffleGrouping("kafka_spout");
 	System.out.println("Spout set");
 
 	//NIMBUS ERRORS HERE
 	LocalCluster localCluster = new LocalCluster();
-	localCluster.submitTopology("stupitops",new Config(),tp.createTopology());
+	localCluster.submitTopology("stupidtops",new Config(),tp.createTopology());
 	Thread.sleep(30000);
     }
     
