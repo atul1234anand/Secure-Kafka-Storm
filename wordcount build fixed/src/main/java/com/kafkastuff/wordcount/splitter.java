@@ -22,9 +22,9 @@ public class splitter extends BaseRichBolt {
 
 	@Override
 	public void execute(Tuple input) {
-		Tuple sentence = input;
-		System.out.println("Sentence : "+sentence);
-		/*
+		String sentence = input.getValue(4).toString();
+		//System.out.println("Sentence : "+input.getValue(4));
+		
 		if (sentence != null) {
 			System.out.println("Sentence: " + sentence);
 			String[] wordArray = sentence.split(" ");
@@ -37,11 +37,11 @@ public class splitter extends BaseRichBolt {
 				count++;
 				wordMap.put(word, count);
 			}
-			// send the constructed Map to next bolt
+			// send the constructed Map to next bolt 
+			System.out.println("Wordmap is: "+wordMap);
 			collector.emit(new Values(wordMap));
 		}
 		// acknowledge that the processing of this tuple is finished
-		*/
 		collector.ack(input);
 	}
 
