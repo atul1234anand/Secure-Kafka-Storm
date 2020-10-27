@@ -18,6 +18,7 @@ Create a new java class (name it producer) by right clicking on the java project
 Right click on the newly created class, select build path -> configure build path -> libraries -> add external jars and select all jars in the lib folder of the kafka source code.
 Copy the code in producer.java to the newly created class.
 Run the class
+```
 
 ## mvn Execution
 ```
