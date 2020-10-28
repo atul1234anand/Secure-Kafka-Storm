@@ -1,7 +1,5 @@
-//package kafka_consumer;
+package com.kafkastuff.wordcount;
 import java.util.Properties;
-
-//import simple producer packages
 import org.apache.kafka.clients.producer.Producer;
 import org.apache.kafka.clients.producer.KafkaProducer;
 import org.apache.kafka.clients.producer.ProducerRecord;
@@ -9,7 +7,7 @@ import org.apache.kafka.clients.producer.ProducerRecord;
 public class producer {
 	public static void main(String[] args) {
 		//String topicName = "my-first-topic";
-		String topicName = "testTopic";
+		String topicName = "prototypeOneTopic";
 		Properties props = new Properties();
 
 		props.put("bootstrap.servers", "localhost:9092");    
