@@ -30,42 +30,20 @@ public class App
     public static void main( String[] args ) throws AlreadyAliveException, InterruptedException, org.apache.storm.thrift.TException, java.lang.Exception
     {
         System.out.println( "TOPOLOGY_STARTING" );
-
 	System.out.println("Config given for topology");
-	//Kafka Spout configerations
 	String zkConnString = "localhost:2181";
-	String topic = "words";
 	System.out.println("Config given for Spout");
 	final TopologyBuilder tp = new TopologyBuilder();
 	System.out.println("Empty Topology created");
-	/*
-	KafkaSpoutConfig<String,String> kafkaSpoutConfig = KafkaSpoutConfig.builder("localhost:9092","testTopic")
-	.setProp(ConsumerConfig.KEY_DESERIALIZER_CLASS_CONFIG, ByteBufferDeserializer.class)
-	.setProp(ConsumerConfig.VALUE_DESERIALIZER_CLASS_CONFIG, ByteBufferDeserializer.class)
-	.setProp(ConsumerConfig.GROUP_ID_CONFIG, "kafka_spout-" + UUID.randomUUID().toString())
-	.build();
-	*/
-	KafkaSpoutConfig<String,String> kafkaSpoutConfig = KafkaSpoutConfig.builder("localhost:9092","testTopic")
+	KafkaSpoutConfig<String,String> kafkaSpoutConfig = KafkaSpoutConfig.builder("localhost:9092","prototypeOneTopic")
 	.setProp(ConsumerConfig.GROUP_ID_CONFIG, "kafka_spout-" + UUID.randomUUID().toString())
 	.build();
 	KafkaSpout<String,String> kafkaSpoutInput = new KafkaSpout<>(kafkaSpoutConfig);
-	
-
 	tp.setSpout("kafka_spout",kafkaSpoutInput, 1);
 	tp.setBolt("sentence-splitter", new splitter(), 1).shuffleGrouping("kafka_spout");
 	System.out.println("Spout set");
-
-	//NIMBUS ERRORS HERE
 	LocalCluster localCluster = new LocalCluster();
 	localCluster.submitTopology("stupidtops",new Config(),tp.createTopology());
 	Thread.sleep(30000);
     }
-    
-    /* KafkaSpoutConfig<ByteBuffer, ByteBuffer> kafkaSpoutConfig = 
-    new KafkaSpoutConfig.Builder<ByteBuffer, ByteBuffer>(bootstrapServers, topic)
-    .setProp(ConsumerConfig.KEY_DESERIALIZER_CLASS_CONFIG, ByteBufferDeserializer.class)
-    .setProp(ConsumerConfig.VALUE_DESERIALIZER_CLASS_CONFIG, ByteBufferDeserializer.class)
-    .setProp(ConsumerConfig.GROUP_ID_CONFIG, "storm-sql-kafka-" + UUID.randomUUID().toString())
-    .setRecordTranslator(new RecordTranslatorSchemeAdapter(scheme))
-    .build();*/
 }
