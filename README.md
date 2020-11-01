@@ -25,3 +25,8 @@ Run the class
 mvn compile
 mvn -e -X exec:java -Dexec.mainClass=com.kafkastuff.wordcount.App
 ```
+
+## mvn Process PID command
+```
+ps -o pid,user,cmd -C java | sed -e 's/\([0-9]\+ *[^ ]*\) *[^ ]* *\([^$]*\)/\1 \2/' -e 's/-c[^ ]* [^ ]* \|-[^ ]* //g'
+```
