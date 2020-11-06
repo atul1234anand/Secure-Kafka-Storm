@@ -30,3 +30,19 @@ mvn -e -X exec:java -Dexec.mainClass=com.kafkastuff.wordcount.App
 ```
 ps -o pid,user,cmd -C java | sed -e 's/\([0-9]\+ *[^ ]*\) *[^ ]* *\([^$]*\)/\1 \2/' -e 's/-c[^ ]* [^ ]* \|-[^ ]* //g'
 ```
+
+## running log4j
+
+Edit log4j.properties in /usr/local/kafka/config/log4j.properties and change rootlogger to DEBUG.
+
+```
+mvn exec:java -Dlog4j.debug -Dlog4j.configuration=/usr/local/kafka/config/log4j.properties -Dexec.mainClass=com.kafkastuff.wordcount.producer
+```
+or
+
+```
+mvn exec:java -Dlog4j.debug -Dlog4j.configuration=log4j.properties -Dexec.mainClass=com.kafkastuff.wordcount.producer
+```
+
+Both give slightly different logs but the error messages seem the same. Maybe fixing one will fix the other.
+
