@@ -34,7 +34,7 @@ ps -o pid,user,cmd -C java | sed -e 's/\([0-9]\+ *[^ ]*\) *[^ ]* *\([^$]*\)/\1 \
 ## running log4j
 
 ```
-mvn exec:java -Dlog4j.debug -Dlog4j.configurationFile=src/main/resources/log4j2.xml -Dexec.mainClass=com.kafkastuff.wordcount.producer
+mvn exec:java -Dlog4j.configurationFile=src/main/resources/log4j2.xml -Dexec.mainClass=com.kafkastuff.wordcount.producer
 ```
 
 To get additional details, modifiy the level field of ```<Root>``` with "trace", "debug", "info", "warn", "error" or "fatal" in ```log4j2.xml```
