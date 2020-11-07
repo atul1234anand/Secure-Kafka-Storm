@@ -3,15 +3,14 @@ import java.util.Properties;
 import org.apache.kafka.clients.producer.Producer;
 import org.apache.kafka.clients.producer.KafkaProducer;
 import org.apache.kafka.clients.producer.ProducerRecord;
-import org.apache.log4j.Logger;
-import org.apache.log4j.Level;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 public class producer {
+	
+	private static final Logger logger = LogManager.getLogger(producer.class);
 	public static void main(String[] args) {
 		//String topicName = "my-first-topic";
-
-		Logger l1 = Logger.getLogger("org");
-		l1.setLevel(Level.DEBUG);
 
 		String topicName = "prototypeOneTopic";
 		Properties props = new Properties();
