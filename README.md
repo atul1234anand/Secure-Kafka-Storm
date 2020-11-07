@@ -38,6 +38,3 @@ Edit log4j.properties in /usr/local/kafka/config/log4j.properties and change roo
 ```
 mvn exec:java -Dlog4j.debug -Dlog4j.configurationFile=src/main/resources/log4j.properties -Dexec.mainClass=com.kafkastuff.wordcount.producer
 ```
-
-Both give slightly different logs but the error messages seem the same. Maybe fixing one will fix the other.
-
