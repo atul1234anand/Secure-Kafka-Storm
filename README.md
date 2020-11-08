@@ -33,16 +33,8 @@ ps -o pid,user,cmd -C java | sed -e 's/\([0-9]\+ *[^ ]*\) *[^ ]* *\([^$]*\)/\1 \
 
 ## running log4j
 
-Edit log4j.properties in /usr/local/kafka/config/log4j.properties and change rootlogger to DEBUG.
-
 ```
-mvn exec:java -Dlog4j.debug -Dlog4j.configuration=/usr/local/kafka/config/log4j.properties -Dexec.mainClass=com.kafkastuff.wordcount.producer
-```
-or
-
-```
-mvn exec:java -Dlog4j.debug -Dlog4j.configuration=log4j.properties -Dexec.mainClass=com.kafkastuff.wordcount.producer
+mvn exec:java -Dlog4j.configurationFile=src/main/resources/log4j2.xml -Dexec.mainClass=com.kafkastuff.wordcount.producer
 ```
 
-Both give slightly different logs but the error messages seem the same. Maybe fixing one will fix the other.
-
+To get additional details, modifiy the level field of ```<Root>``` with "trace", "debug", "info", "warn", "error" or "fatal" in ```log4j2.xml```
