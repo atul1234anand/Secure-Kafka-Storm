@@ -1,18 +1,39 @@
 package com.kafkastuff.wordcount;
 import java.util.Properties;
+import java.util.Collections;
 import org.apache.kafka.clients.producer.Producer;
 import org.apache.kafka.clients.producer.KafkaProducer;
 import org.apache.kafka.clients.producer.ProducerRecord;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.apache.kafka.clients.admin.AdminClient;
+import org.apache.kafka.clients.admin.NewTopic;
 
 public class producer {
 	
 	private static final Logger logger = LogManager.getLogger(producer.class);
+
+	public static void createTestTopic(String topic, int numberOfPartitions, int replicationFactor, Properties properties) {
+		//LOG.info("Creating topic {}", topic);
+		System.out.println("Topic is: "+topic);
+		try (AdminClient adminClient = AdminClient.create(new Properties())) {
+			NewTopic topicObj = new NewTopic(topic, numberOfPartitions, (short) replicationFactor);
+			adminClient.createTopics(
+Collections.singleton(topicObj)).all().get();
+		} catch (Exception e) {
+			e.printStackTrace();
+			//fail("Create test topic : " + topic + " failed, " + e.getMessage());
+		}
+	}
+
 	public static void main(String[] args) {
 		//String topicName = "my-first-topic";
 
-		String topicName = "prototypeOneTopic";
+		String topicName = "TestTopic";
+		Properties props_1 = new Properties();
+		props_1.put("bootstrap.servers", "localhost:9092"); 
+		createTestTopic(topicName,1,1,props_1);
+
 		Properties props = new Properties();
 
 		props.put("bootstrap.servers", "localhost:9092");    
