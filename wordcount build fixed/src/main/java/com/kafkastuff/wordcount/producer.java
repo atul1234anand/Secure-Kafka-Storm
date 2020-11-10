@@ -1,6 +1,7 @@
 package com.kafkastuff.wordcount;
 import java.util.Properties;
 import java.util.Collections;
+import java.util.Set;
 import org.apache.kafka.clients.producer.Producer;
 import org.apache.kafka.clients.producer.KafkaProducer;
 import org.apache.kafka.clients.producer.ProducerRecord;
@@ -8,6 +9,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.apache.kafka.clients.admin.AdminClient;
 import org.apache.kafka.clients.admin.NewTopic;
+import org.apache.kafka.clients.admin.ListTopicsResult;
 
 public class producer {
 	
@@ -17,9 +19,13 @@ public class producer {
 		//LOG.info("Creating topic {}", topic);
 		System.out.println("Topic is: "+topic);
 		try (AdminClient adminClient = AdminClient.create(new Properties())) {
-			NewTopic topicObj = new NewTopic(topic, numberOfPartitions, (short) replicationFactor);
-			adminClient.createTopics(
-Collections.singleton(topicObj)).all().get();
+			ListTopicsResult listTopics = adminClient.listTopics();
+			Set<String> names = listTopics.names().get();
+			boolean contains = names.contains(topic);
+			if(!contains){
+				NewTopic topicObj = new NewTopic(topic, numberOfPartitions, (short) replicationFactor);
+				adminClient.createTopics(Collections.singleton(topicObj)).all().get();
+			}
 		} catch (Exception e) {
 			e.printStackTrace();
 			//fail("Create test topic : " + topic + " failed, " + e.getMessage());
