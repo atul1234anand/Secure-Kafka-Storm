@@ -3,7 +3,7 @@ import java.util.Properties;
 import java.util.Collections;
 import java.util.Set;
 import org.apache.kafka.clients.producer.Producer;
-import org.apache.kafka.clients.producer.KafkaProducer;
+import com.kafkastuff.wordcount.KafkaProducer;
 import org.apache.kafka.clients.producer.ProducerRecord;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
