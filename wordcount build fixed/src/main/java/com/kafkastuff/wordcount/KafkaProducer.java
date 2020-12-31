@@ -14,8 +14,10 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.apache.kafka.clients.producer;
-
+package com.kafkastuff.wordcount;
+//package org.apache.kafka.clients.producer;
+import com.kafkastuff.wordcount.Producer_kafka;
+//import org.apache.kafka.clients.Producer;
 import org.apache.kafka.clients.ApiVersions;
 import org.apache.kafka.clients.ClientDnsLookup;
 import org.apache.kafka.clients.ClientUtils;
@@ -75,6 +77,11 @@ import org.apache.kafka.common.utils.Time;
 import org.apache.kafka.common.utils.Utils;
 import org.slf4j.Logger;
 
+import org.apache.kafka.clients.producer.ProducerRecord;
+import org.apache.kafka.clients.producer.RecordMetadata;
+import org.apache.kafka.clients.producer.Callback;
+import org.apache.kafka.clients.producer.Partitioner;
+
 import java.net.InetSocketAddress;
 import java.time.Duration;
 import java.util.Collections;
@@ -89,6 +96,7 @@ import java.util.concurrent.atomic.AtomicReference;
 
 import com.kafkastuff.wordcount.ProducerConfig;
 
+import java.util.HashMap;
 
 /**
  * A Kafka client that publishes records to the Kafka cluster.
@@ -234,7 +242,7 @@ import com.kafkastuff.wordcount.ProducerConfig;
  * <code>UnsupportedVersionException</code> when invoking an API that is not available in the running broker version.
  * </p>
  */
-public class KafkaProducer<K, V> implements Producer<K, V> {
+public class KafkaProducer<K, V> implements Producer_kafka<K, V> {
 
     private final Logger log;
     private static final String JMX_PREFIX = "kafka.producer";
@@ -261,6 +269,19 @@ public class KafkaProducer<K, V> implements Producer<K, V> {
     private final ProducerInterceptors<K, V> interceptors;
     private final ApiVersions apiVersions;
     private final TransactionManager transactionManager;
+
+    public static Map<String, Object> propsToMap(Properties properties) {
+        Map<String, Object> map = new HashMap<>(properties.size());
+        for (Map.Entry<Object, Object> entry : properties.entrySet()) {
+            if (entry.getKey() instanceof String) {
+                String k = (String) entry.getKey();
+                map.put(k, properties.get(k));
+            } else {
+                throw new ConfigException(entry.getKey().toString(), entry.getValue(), "Key must be a string.");
+            }
+        }
+        return map;
+    }
 
     /**
      * A producer is instantiated by providing a set of key-value pairs as configuration. Valid configuration strings
@@ -322,7 +343,7 @@ public class KafkaProducer<K, V> implements Producer<K, V> {
      *                         be called in the producer when the serializer is passed in directly.
      */
     public KafkaProducer(Properties properties, Serializer<K> keySerializer, Serializer<V> valueSerializer) {
-        this(Utils.propsToMap(properties), keySerializer, valueSerializer);
+        this(propsToMap(properties), keySerializer, valueSerializer);
     }
 
     // visible for testing
@@ -387,9 +408,9 @@ public class KafkaProducer<K, V> implements Producer<K, V> {
                 this.valueSerializer = valueSerializer;
             }
 
-            List<ProducerInterceptor<K, V>> interceptorList = (List) config.getConfiguredInstances(
+            List<ProducerInterceptors<K, V>> interceptorList = (List) config.getConfiguredInstances(
                     ProducerConfig.INTERCEPTOR_CLASSES_CONFIG,
-                    ProducerInterceptor.class,
+                    ProducerInterceptors.class,
                     Collections.singletonMap(ProducerConfig.CLIENT_ID_CONFIG, clientId));
             if (interceptors != null)
                 this.interceptors = interceptors;
