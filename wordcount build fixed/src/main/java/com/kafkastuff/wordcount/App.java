@@ -35,7 +35,7 @@ public class App
 	System.out.println("Config given for Spout");
 	final TopologyBuilder tp = new TopologyBuilder();
 	System.out.println("Empty Topology created");
-	KafkaSpoutConfig<String,String> kafkaSpoutConfig = KafkaSpoutConfig.builder("localhost:9092","prototypeOneTopic")
+	KafkaSpoutConfig<String,String> kafkaSpoutConfig = KafkaSpoutConfig.builder("localhost:9092","TestTopic")
 	.setProp(ConsumerConfig.GROUP_ID_CONFIG, "kafka_spout-" + UUID.randomUUID().toString())
 	.build();
 	KafkaSpout<String,String> kafkaSpoutInput = new KafkaSpout<>(kafkaSpoutConfig);

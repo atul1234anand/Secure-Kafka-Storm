@@ -262,6 +262,10 @@ public class ProducerConfig extends AbstractConfig {
             "If a TransactionalId is configured, <code>enable.idempotence</code> is implied. " +
             "By default the TransactionId is not configured, which means transactions cannot be used. " +
             "Note that, by default, transactions require a cluster of at least three brokers which is the recommended setting for production; for development you can change this, by adjusting broker setting <code>transaction.state.log.replication.factor</code>.";
+            
+            
+    public static final String RULES_CONFIG = "rules";
+    public static final String RULES_DOC = "These are rules for security punctuations";
 
     /**
      * <code>security.providers</code>
@@ -426,6 +430,10 @@ public class ProducerConfig extends AbstractConfig {
                                         new ConfigDef.NonEmptyString(),
                                         Importance.LOW,
                                         TRANSACTIONAL_ID_DOC)
+                                .define(RULES_CONFIG,
+                                        Type.STRING,
+                                        Importance.MEDIUM,
+                                        RULES_DOC)        
                                 .defineInternal(AUTO_DOWNGRADE_TXN_COMMIT,
                                         Type.BOOLEAN,
                                         false,
