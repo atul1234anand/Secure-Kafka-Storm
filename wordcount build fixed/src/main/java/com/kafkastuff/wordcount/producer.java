@@ -3,8 +3,10 @@ import java.util.Properties;
 import java.util.Collections;
 import java.util.Set;
 import org.apache.kafka.clients.producer.Producer;
-import com.kafkastuff.wordcount.KafkaProducer;
-import com.kafkastuff.wordcount.Producer_kafka;
+//import com.kafkastuff.wordcount.KafkaProducer;
+//import com.kafkastuff.wordcount.Producer_kafka;
+import org.apache.kafka.clients.producer.KafkaProducer;
+import org.apache.kafka.clients.producer.Producer;
 import org.apache.kafka.clients.producer.ProducerRecord;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -52,7 +54,7 @@ public class producer {
 		props.put("key.serializer","org.apache.kafka.common.serialization.StringSerializer");
 		props.put("value.serializer","org.apache.kafka.common.serialization.StringSerializer");
 		
-		Producer_kafka<String,String> producer = new KafkaProducer<String,String>(props);
+		Producer<String,String> producer = new KafkaProducer<String,String>(props);
 		
 		for(int i = 0;i<100;i++) {
 	         producer.send(new ProducerRecord<String, String>(topicName, "I am borat" + Integer.toString(i), "I am borat" + Integer.toString(i)));

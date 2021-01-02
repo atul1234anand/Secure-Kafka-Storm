@@ -1,0 +1,83 @@
+2021-01-02 14:55:12.904 [com.kafkastuff.wordcount.App.main()] DEBUG org.apache.storm.kafka.spout.KafkaSpoutRetryExponentialBackoff - Instantiated KafkaSpoutRetryExponentialBackoff{delay=TimeInterval{length=0, timeUnit=SECONDS}, ratio=TimeInterval{length=2, timeUnit=MILLISECONDS}, maxRetries=2147483647, maxRetryDelay=TimeInterval{length=10, timeUnit=SECONDS}}
+2021-01-02 14:55:12.909 [com.kafkastuff.wordcount.App.main()] INFO  org.apache.storm.kafka.spout.KafkaSpoutConfig - Setting Kafka consumer property 'auto.offset.reset' to 'earliest' to ensure at-least-once processing
+2021-01-02 14:55:12.909 [com.kafkastuff.wordcount.App.main()] INFO  org.apache.storm.kafka.spout.KafkaSpoutConfig - Setting Kafka consumer property 'enable.auto.commit' to 'false', because the spout does not support auto-commit
+2021-01-02 14:55:12.918 [com.kafkastuff.wordcount.App.main()] DEBUG org.apache.storm.kafka.spout.KafkaSpout - Dropping Kafka prop 'key.deserializer' from component configuration
+2021-01-02 14:55:12.918 [com.kafkastuff.wordcount.App.main()] DEBUG org.apache.storm.kafka.spout.KafkaSpout - Dropping Kafka prop 'value.deserializer' from component configuration
+2021-01-02 14:55:12.942 [com.kafkastuff.wordcount.App.main()] DEBUG org.apache.storm.utils.Utils - Using defaults.yaml from resources
+2021-01-02 14:55:12.993 [com.kafkastuff.wordcount.App.main()] INFO  org.apache.storm.validation.ConfigValidation - Will use [class org.apache.storm.DaemonConfig, class org.apache.storm.Config] for validation
+2021-01-02 14:55:13.014 [com.kafkastuff.wordcount.App.main()] DEBUG org.apache.storm.utils.Utils - Using defaults.yaml from resources
+2021-01-02 14:55:13.051 [com.kafkastuff.wordcount.App.main()] WARN  org.apache.storm.validation.ConfigValidation - task.heartbeat.frequency.secs is a deprecated config please see class org.apache.storm.Config.TASK_HEARTBEAT_FREQUENCY_SECS for more information.
+2021-01-02 14:55:13.067 [com.kafkastuff.wordcount.App.main()] INFO  org.apache.storm.shade.org.apache.zookeeper.server.NIOServerCnxnFactory - binding to port 0.0.0.0/0.0.0.0:2000
+2021-01-02 14:55:13.068 [com.kafkastuff.wordcount.App.main()] INFO  org.apache.storm.zookeeper.Zookeeper - Starting inprocess zookeeper at port 2000 and dir /tmp/1f347e65-082e-4cb9-8591-4a0bc25060ee
+2021-01-02 14:55:13.073 [com.kafkastuff.wordcount.App.main()] INFO  org.apache.storm.shade.org.apache.zookeeper.server.ZooKeeperServer - Server environment:zookeeper.version=3.4.14-4c25d480e66aadd371de8bd2fd8da255ac140bcf, built on 03/06/2019 16:18 GMT
+2021-01-02 14:55:13.073 [com.kafkastuff.wordcount.App.main()] INFO  org.apache.storm.shade.org.apache.zookeeper.server.ZooKeeperServer - Server environment:host.name=archlinux
+2021-01-02 14:55:13.073 [com.kafkastuff.wordcount.App.main()] INFO  org.apache.storm.shade.org.apache.zookeeper.server.ZooKeeperServer - Server environment:java.version=14.0.2
+2021-01-02 14:55:13.074 [com.kafkastuff.wordcount.App.main()] INFO  org.apache.storm.shade.org.apache.zookeeper.server.ZooKeeperServer - Server environment:java.vendor=N/A
+2021-01-02 14:55:13.074 [com.kafkastuff.wordcount.App.main()] INFO  org.apache.storm.shade.org.apache.zookeeper.server.ZooKeeperServer - Server environment:java.home=/usr/lib/jvm/java-14-openjdk
+2021-01-02 14:55:13.074 [com.kafkastuff.wordcount.App.main()] INFO  org.apache.storm.shade.org.apache.zookeeper.server.ZooKeeperServer - Server environment:java.class.path=/opt/maven/boot/plexus-classworlds-2.6.0.jar
+2021-01-02 14:55:13.074 [com.kafkastuff.wordcount.App.main()] INFO  org.apache.storm.shade.org.apache.zookeeper.server.ZooKeeperServer - Server environment:java.library.path=/usr/java/packages/lib:/usr/lib64:/lib64:/lib:/usr/lib
+2021-01-02 14:55:13.074 [com.kafkastuff.wordcount.App.main()] INFO  org.apache.storm.shade.org.apache.zookeeper.server.ZooKeeperServer - Server environment:java.io.tmpdir=/tmp
+2021-01-02 14:55:13.074 [com.kafkastuff.wordcount.App.main()] INFO  org.apache.storm.shade.org.apache.zookeeper.server.ZooKeeperServer - Server environment:java.compiler=<NA>
+2021-01-02 14:55:13.074 [com.kafkastuff.wordcount.App.main()] INFO  org.apache.storm.shade.org.apache.zookeeper.server.ZooKeeperServer - Server environment:os.name=Linux
+2021-01-02 14:55:13.074 [com.kafkastuff.wordcount.App.main()] INFO  org.apache.storm.shade.org.apache.zookeeper.server.ZooKeeperServer - Server environment:os.arch=amd64
+2021-01-02 14:55:13.075 [com.kafkastuff.wordcount.App.main()] INFO  org.apache.storm.shade.org.apache.zookeeper.server.ZooKeeperServer - Server environment:os.version=5.9.14-zen1-1-zen
+2021-01-02 14:55:13.075 [com.kafkastuff.wordcount.App.main()] INFO  org.apache.storm.shade.org.apache.zookeeper.server.ZooKeeperServer - Server environment:user.name=umashankar
+2021-01-02 14:55:13.075 [com.kafkastuff.wordcount.App.main()] INFO  org.apache.storm.shade.org.apache.zookeeper.server.ZooKeeperServer - Server environment:user.home=/home/umashankar
+2021-01-02 14:55:13.075 [com.kafkastuff.wordcount.App.main()] INFO  org.apache.storm.shade.org.apache.zookeeper.server.ZooKeeperServer - Server environment:user.dir=/run/media/umashankar/Storage/Projects/Capstone/Secure-Kafka-Storm/wordcount build fixed
+2021-01-02 14:55:13.077 [com.kafkastuff.wordcount.App.main()] DEBUG org.apache.storm.shade.org.apache.zookeeper.server.persistence.FileTxnSnapLog - Opening datadir:/tmp/1f347e65-082e-4cb9-8591-4a0bc25060ee snapDir:/tmp/1f347e65-082e-4cb9-8591-4a0bc25060ee
+2021-01-02 14:55:13.089 [com.kafkastuff.wordcount.App.main()] INFO  org.apache.storm.shade.org.apache.zookeeper.server.ZooKeeperServer - Created server with tickTime 2000 minSessionTimeout 4000 maxSessionTimeout 40000 datadir /tmp/1f347e65-082e-4cb9-8591-4a0bc25060ee/version-2 snapdir /tmp/1f347e65-082e-4cb9-8591-4a0bc25060ee/version-2
+2021-01-02 14:55:13.103 [com.kafkastuff.wordcount.App.main()] DEBUG org.apache.storm.shade.org.apache.zookeeper.server.ZooKeeperServer - ZKShutdownHandler is not registered, so ZooKeeper server won't take any action on ERROR or SHUTDOWN server state changes
+2021-01-02 14:55:13.154 [com.kafkastuff.wordcount.App.main()] INFO  org.apache.storm.shade.org.apache.curator.utils.Compatibility - Running in ZooKeeper 3.4.x compatibility mode
+2021-01-02 14:55:13.155 [com.kafkastuff.wordcount.App.main()] INFO  org.apache.storm.shade.org.apache.curator.utils.Compatibility - Using emulated InjectSessionExpiration
+2021-01-02 14:55:13.158 [com.kafkastuff.wordcount.App.main()] DEBUG org.apache.storm.utils.StormBoundedExponentialBackoffRetry - The baseSleepTimeMs [1000] the maxSleepTimeMs [30000] the maxRetries [5]
+2021-01-02 14:55:13.183 [com.kafkastuff.wordcount.App.main()] INFO  org.apache.storm.zookeeper.ClientZookeeper - Starting ZK Curator
+2021-01-02 14:55:13.183 [com.kafkastuff.wordcount.App.main()] INFO  org.apache.storm.shade.org.apache.curator.framework.imps.CuratorFrameworkImpl - Starting
+2021-01-02 14:55:13.185 [com.kafkastuff.wordcount.App.main()] DEBUG org.apache.storm.shade.org.apache.curator.CuratorZookeeperClient - Starting
+2021-01-02 14:55:13.185 [com.kafkastuff.wordcount.App.main()] DEBUG org.apache.storm.shade.org.apache.curator.ConnectionState - Starting
+2021-01-02 14:55:13.185 [com.kafkastuff.wordcount.App.main()] DEBUG org.apache.storm.shade.org.apache.curator.ConnectionState - reset
+2021-01-02 14:55:13.188 [com.kafkastuff.wordcount.App.main()] INFO  org.apache.storm.shade.org.apache.zookeeper.ZooKeeper - Client environment:zookeeper.version=3.4.14-4c25d480e66aadd371de8bd2fd8da255ac140bcf, built on 03/06/2019 16:18 GMT
+2021-01-02 14:55:13.188 [com.kafkastuff.wordcount.App.main()] INFO  org.apache.storm.shade.org.apache.zookeeper.ZooKeeper - Client environment:host.name=archlinux
+2021-01-02 14:55:13.188 [com.kafkastuff.wordcount.App.main()] INFO  org.apache.storm.shade.org.apache.zookeeper.ZooKeeper - Client environment:java.version=14.0.2
+2021-01-02 14:55:13.188 [com.kafkastuff.wordcount.App.main()] INFO  org.apache.storm.shade.org.apache.zookeeper.ZooKeeper - Client environment:java.vendor=N/A
+2021-01-02 14:55:13.188 [com.kafkastuff.wordcount.App.main()] INFO  org.apache.storm.shade.org.apache.zookeeper.ZooKeeper - Client environment:java.home=/usr/lib/jvm/java-12021-01-02 14:55:38.309 [com.kafkastuff.wordcount.App.main()] DEBUG org.apache.storm.kafka.spout.KafkaSpoutRetryExponentialBackoff - Instantiated KafkaSpoutRetryExponentialBackoff{delay=TimeInterval{length=0, timeUnit=SECONDS}, ratio=TimeInterval{length=2, timeUnit=MILLISECONDS}, maxRetries=2147483647, maxRetryDelay=TimeInterval{length=10, timeUnit=SECONDS}}
+2021-01-02 14:55:38.314 [com.kafkastuff.wordcount.App.main()] INFO  org.apache.storm.kafka.spout.KafkaSpoutConfig - Setting Kafka consumer property 'auto.offset.reset' to 'earliest' to ensure at-least-once processing
+2021-01-02 14:55:38.314 [com.kafkastuff.wordcount.App.main()] INFO  org.apache.storm.kafka.spout.KafkaSpoutConfig - Setting Kafka consumer property 'enable.auto.commit' to 'false', because the spout does not support auto-commit
+2021-01-02 14:55:38.320 [com.kafkastuff.wordcount.App.main()] DEBUG org.apache.storm.kafka.spout.KafkaSpout - Dropping Kafka prop 'key.deserializer' from component configuration
+2021-01-02 14:55:38.321 [com.kafkastuff.wordcount.App.main()] DEBUG org.apache.storm.kafka.spout.KafkaSpout - Dropping Kafka prop 'value.deserializer' from component configuration
+2021-01-02 14:55:38.335 [com.kafkastuff.wordcount.App.main()] DEBUG org.apache.storm.utils.Utils - Using defaults.yaml from resources
+2021-01-02 14:55:38.369 [com.kafkastuff.wordcount.App.main()] INFO  org.apache.storm.validation.ConfigValidation - Will use [class org.apache.storm.DaemonConfig, class org.apache.storm.Config] for validation
+2021-01-02 14:55:38.385 [com.kafkastuff.wordcount.App.main()] DEBUG org.apache.storm.utils.Utils - Using defaults.yaml from resources
+2021-01-02 14:55:38.413 [com.kafkastuff.wordcount.App.main()] WARN  org.apache.storm.validation.ConfigValidation - task.heartbeat.frequency.secs is a deprecated config please see class org.apache.storm.Config.TASK_HEARTBEAT_FREQUENCY_SECS for more information.
+2021-01-02 14:55:38.424 [com.kafkastuff.wordcount.App.main()] INFO  org.apache.storm.shade.org.apache.zookeeper.server.NIOServerCnxnFactory - binding to port 0.0.0.0/0.0.0.0:2000
+2021-01-02 14:55:38.424 [com.kafkastuff.wordcount.App.main()] INFO  org.apache.storm.zookeeper.Zookeeper - Starting inprocess zookeeper at port 2000 and dir /tmp/e3bc112c-9249-4554-abc2-c5b5648662c6
+2021-01-02 14:55:38.428 [com.kafkastuff.wordcount.App.main()] INFO  org.apache.storm.shade.org.apache.zookeeper.server.ZooKeeperServer - Server environment:zookeeper.version=3.4.14-4c25d480e66aadd371de8bd2fd8da255ac140bcf, built on 03/06/2019 16:18 GMT
+2021-01-02 14:55:38.428 [com.kafkastuff.wordcount.App.main()] INFO  org.apache.storm.shade.org.apache.zookeeper.server.ZooKeeperServer - Server environment:host.name=archlinux
+2021-01-02 14:55:38.428 [com.kafkastuff.wordcount.App.main()] INFO  org.apache.storm.shade.org.apache.zookeeper.server.ZooKeeperServer - Server environment:java.version=14.0.2
+2021-01-02 14:55:38.428 [com.kafkastuff.wordcount.App.main()] INFO  org.apache.storm.shade.org.apache.zookeeper.server.ZooKeeperServer - Server environment:java.vendor=N/A
+2021-01-02 14:55:38.428 [com.kafkastuff.wordcount.App.main()] INFO  org.apache.storm.shade.org.apache.zookeeper.server.ZooKeeperServer - Server environment:java.home=/usr/lib/jvm/java-14-openjdk
+2021-01-02 14:55:38.428 [com.kafkastuff.wordcount.App.main()] INFO  org.apache.storm.shade.org.apache.zookeeper.server.ZooKeeperServer - Server environment:java.class.path=/opt/maven/boot/plexus-classworlds-2.6.0.jar
+2021-01-02 14:55:38.428 [com.kafkastuff.wordcount.App.main()] INFO  org.apache.storm.shade.org.apache.zookeeper.server.ZooKeeperServer - Server environment:java.library.path=/usr/java/packages/lib:/usr/lib64:/lib64:/lib:/usr/lib
+2021-01-02 14:55:38.428 [com.kafkastuff.wordcount.App.main()] INFO  org.apache.storm.shade.org.apache.zookeeper.server.ZooKeeperServer - Server environment:java.io.tmpdir=/tmp
+2021-01-02 14:55:38.429 [com.kafkastuff.wordcount.App.main()] INFO  org.apache.storm.shade.org.apache.zookeeper.server.ZooKeeperServer - Server environment:java.compiler=<NA>
+2021-01-02 14:55:38.429 [com.kafkastuff.wordcount.App.main()] INFO  org.apache.storm.shade.org.apache.zookeeper.server.ZooKeeperServer - Server environment:os.name=Linux
+2021-01-02 14:55:38.429 [com.kafkastuff.wordcount.App.main()] INFO  org.apache.storm.shade.org.apache.zookeeper.server.ZooKeeperServer - Server environment:os.arch=amd64
+2021-01-02 14:55:38.429 [com.kafkastuff.wordcount.App.main()] INFO  org.apache.storm.shade.org.apache.zookeeper.server.ZooKeeperServer - Server environment:os.version=5.9.14-zen1-1-zen
+2021-01-02 14:55:38.429 [com.kafkastuff.wordcount.App.main()] INFO  org.apache.storm.shade.org.apache.zookeeper.server.ZooKeeperServer - Server environment:user.name=umashankar
+2021-01-02 14:55:38.429 [com.kafkastuff.wordcount.App.main()] INFO  org.apache.storm.shade.org.apache.zookeeper.server.ZooKeeperServer - Server environment:user.home=/home/umashankar
+2021-01-02 14:55:38.429 [com.kafkastuff.wordcount.App.main()] INFO  org.apache.storm.shade.org.apache.zookeeper.server.ZooKeeperServer - Server environment:user.dir=/run/media/umashankar/Storage/Projects/Capstone/Secure-Kafka-Storm/wordcount build fixed
+2021-01-02 14:55:38.431 [com.kafkastuff.wordcount.App.main()] DEBUG org.apache.storm.shade.org.apache.zookeeper.server.persistence.FileTxnSnapLog - Opening datadir:/tmp/e3bc112c-9249-4554-abc2-c5b5648662c6 snapDir:/tmp/e3bc112c-9249-4554-abc2-c5b5648662c6
+2021-01-02 14:55:38.437 [com.kafkastuff.wordcount.App.main()] INFO  org.apache.storm.shade.org.apache.zookeeper.server.ZooKeeperServer - Created server with tickTime 2000 minSessionTimeout 4000 maxSessionTimeout 40000 datadir /tmp/e3bc112c-9249-4554-abc2-c5b5648662c6/version-2 snapdir /tmp/e3bc112c-9249-4554-abc2-c5b5648662c6/version-2
+2021-01-02 14:55:38.455 [com.kafkastuff.wordcount.App.main()] DEBUG org.apache.storm.shade.org.apache.zookeeper.server.ZooKeeperServer - ZKShutdownHandler is not registered, so ZooKeeper server won't take any action on ERROR or SHUTDOWN server state changes
+2021-01-02 14:55:38.487 [com.kafkastuff.wordcount.App.main()] INFO  org.apache.storm.shade.org.apache.curator.utils.Compatibility - Running in ZooKeeper 3.4.x compatibility mode
+2021-01-02 14:55:38.487 [com.kafkastuff.wordcount.App.main()] INFO  org.apache.storm.shade.org.apache.curator.utils.Compatibility - Using emulated InjectSessionExpiration
+2021-01-02 14:55:38.490 [com.kafkastuff.wordcount.App.main()] DEBUG org.apache.storm.utils.StormBoundedExponentialBackoffRetry - The baseSleepTimeMs [1000] the maxSleepTimeMs [30000] the maxRetries [5]
+2021-01-02 14:55:38.510 [com.kafkastuff.wordcount.App.main()] INFO  org.apache.storm.zookeeper.ClientZookeeper - Starting ZK Curator
+2021-01-02 14:55:38.510 [com.kafkastuff.wordcount.App.main()] INFO  org.apache.storm.shade.org.apache.curator.framework.imps.CuratorFrameworkImpl - Starting
+2021-01-02 14:55:38.512 [com.kafkastuff.wordcount.App.main()] DEBUG org.apache.storm.shade.org.apache.curator.CuratorZookeeperClient - Starting
+2021-01-02 14:55:38.514 [com.kafkastuff.wordcount.App.main()] DEBUG org.apache.storm.shade.org.apache.curator.ConnectionState - Starting
+2021-01-02 14:55:38.514 [com.kafkastuff.wordcount.App.main()] DEBUG org.apache.storm.shade.org.apache.curator.ConnectionState - reset
+2021-01-02 14:55:38.516 [com.kafkastuff.wordcount.App.main()] INFO  org.apache.storm.shade.org.apache.zookeeper.ZooKeeper - Client environment:zookeeper.version=3.4.14-4c25d480e66aadd371de8bd2fd8da255ac140bcf, built on 03/06/2019 16:18 GMT
+2021-01-02 14:55:38.517 [com.kafkastuff.wordcount.App.main()] INFO  org.apache.storm.shade.org.apache.zookeeper.ZooKeeper - Client environment:host.name=archlinux
+2021-01-02 14:55:38.517 [com.kafkastuff.wordcount.App.main()] INFO  org.apache.storm.shade.org.apache.zookeeper.ZooKeeper - Client environment:java.version=14.0.2
+2021-01-02 14:55:38.517 [com.kafkastuff.wordcount.App.main()] INFO  org.apache.storm.shade.org.apache.zookeeper.ZooKeeper - Client environment:java.vendor=N/A
+2021-01-02 14:55:38.517 [com.kafkastuff.wordcount.App.main()] INFO  org.apache.storm.shade.org.apache.zookeeper.ZooKeeper - Client environment:java.home=/usr/lib/jvm/java-1
