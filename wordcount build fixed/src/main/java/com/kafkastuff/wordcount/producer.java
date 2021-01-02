@@ -37,7 +37,7 @@ public class producer {
 
 	public static void main(String[] args) {
 		//String topicName = "my-first-topic";
-
+		System.out.println("Started Producer");
 		String topicName = "TestTopic";
 		Properties props_1 = new Properties();
 		props_1.put("bootstrap.servers", "localhost:9092"); 
@@ -53,9 +53,10 @@ public class producer {
 		props.put("buffer.memory", 33554432);
 		props.put("key.serializer","org.apache.kafka.common.serialization.StringSerializer");
 		props.put("value.serializer","org.apache.kafka.common.serialization.StringSerializer");
+		props.put("rules","GROUP1:READ");
 		
 		Producer<String,String> producer = new KafkaProducer<String,String>(props);
-		
+		System.out.println("Before Send");
 		for(int i = 0;i<100;i++) {
 	         producer.send(new ProducerRecord<String, String>(topicName, "I am borat" + Integer.toString(i), "I am borat" + Integer.toString(i)));
 		}

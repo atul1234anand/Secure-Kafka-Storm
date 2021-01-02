@@ -327,6 +327,8 @@ public class KafkaProducer<K, V> implements Producer<K, V> {
                   KafkaClient kafkaClient,
                   ProducerInterceptors<K, V> interceptors,
                   Time time) {
+        String Rules = config.getString(ProducerConfig.RULES_CONFIG);
+        System.out.println("RULES ARE: "+Rules);         
         try {
             this.producerConfig = config;
             this.time = time;
