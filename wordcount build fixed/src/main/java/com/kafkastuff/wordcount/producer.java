@@ -14,6 +14,7 @@ import org.apache.kafka.clients.admin.AdminClient;
 import org.apache.kafka.clients.admin.NewTopic;
 import org.apache.kafka.clients.admin.ListTopicsResult;
 
+
 public class producer {
 	
 	private static final Logger logger = LogManager.getLogger(producer.class);
@@ -34,9 +35,17 @@ public class producer {
 			//fail("Create test topic : " + topic + " failed, " + e.getMessage());
 		}
 	}
+	
+	public void sendInfo(KafkaProducer<String,String> Producer,String topicName){
+		for(int i = 0;i<100;i++) {
+			String[] updatedKV = Producer.updateRules("I am borat" + Integer.toString(i), "I am borat" + Integer.toString(i));
+			Producer.send(new ProducerRecord<String, String>(topicName,updatedKV[0],updatedKV[1]));
+		}	
+	}
 
 	public static void main(String[] args) {
 		//String topicName = "my-first-topic";
+		
 		System.out.println("Started Producer");
 		String topicName = "TestTopic";
 		Properties props_1 = new Properties();
@@ -55,11 +64,10 @@ public class producer {
 		props.put("value.serializer","org.apache.kafka.common.serialization.StringSerializer");
 		props.put("rules","GROUP1:READ");
 		
-		Producer<String,String> producer = new KafkaProducer<String,String>(props);
+		KafkaProducer<String,String> producer = new KafkaProducer<String,String>(props);
+		producer p = new producer();
 		System.out.println("Before Send");
-		for(int i = 0;i<100;i++) {
-	         producer.send(new ProducerRecord<String, String>(topicName, "I am borat" + Integer.toString(i), "I am borat" + Integer.toString(i)));
-		}
+		p.sendInfo(producer,topicName);
 		System.out.println("MESSAGE SENT");
 		producer.close();
 	}	

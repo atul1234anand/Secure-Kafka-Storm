@@ -259,6 +259,7 @@ public class KafkaProducer<K, V> implements Producer<K, V> {
     private final ProducerInterceptors<K, V> interceptors;
     private final ApiVersions apiVersions;
     private final TransactionManager transactionManager;
+    public static String rules;
 
     /**
      * A producer is instantiated by providing a set of key-value pairs as configuration. Valid configuration strings
@@ -327,8 +328,8 @@ public class KafkaProducer<K, V> implements Producer<K, V> {
                   KafkaClient kafkaClient,
                   ProducerInterceptors<K, V> interceptors,
                   Time time) {
-        String Rules = config.getString(ProducerConfig.RULES_CONFIG);
-        System.out.println("RULES ARE: "+Rules);         
+        this.rules = config.getString(ProducerConfig.RULES_CONFIG);
+        System.out.println("RULES ARE: "+((Object)rules).getClass());
         try {
             this.producerConfig = config;
             this.time = time;
@@ -771,9 +772,29 @@ public class KafkaProducer<K, V> implements Producer<K, V> {
      * See {@link #send(ProducerRecord, Callback)} for details.
      */
     @Override
-    public Future<RecordMetadata> send(ProducerRecord<K, V> record) {
+    public Future<RecordMetadata> send(ProducerRecord<K,V> record) {
+        /*
+        if(this.rules.length()>0){
+        	String hello = (String)record.key+this.rules;
+        	record.key = K.cast(hello);
+        	//record.value = record.value+this.rules;
+        	//System.out.println(record.key+" "+record.value);
+        	//System.out.println((record.key).getClass());
+        	//System.out.println(hello);
+        }
+        */
         return send(record, null);
     }
+    
+    public String[] updateRules(String key, String value){
+        String[] updatedKV = new String[2];
+        if(this.rules.length()>0){
+            updatedKV[0] = key + this.rules;
+            updatedKV[1] = key + this.rules; 
+        }
+        return updatedKV;
+    }
+    
 
     /**
      * Asynchronously send a record to a topic and invoke the provided callback when the send has been acknowledged.
