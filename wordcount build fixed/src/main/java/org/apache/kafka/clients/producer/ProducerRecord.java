@@ -51,8 +51,10 @@ public class ProducerRecord<K, V> {
     private final String topic;
     private final Integer partition;
     private final Headers headers;
-    private final K key;
-    private final V value;
+    public K key;
+    public V value;
+    //public String key;
+    //public String value;
     private final Long timestamp;
 
     /**
@@ -160,17 +162,15 @@ public class ProducerRecord<K, V> {
     /**
      * @return The key (or null if no key is specified)
      */
+    
     public K key() {
         return key;
     }
 
-    /**
-     * @return The value
-     */
     public V value() {
         return value;
     }
-
+    
     /**
      * @return The timestamp, which is in milliseconds since epoch.
      */
