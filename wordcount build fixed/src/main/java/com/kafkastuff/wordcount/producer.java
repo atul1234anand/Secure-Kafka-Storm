@@ -13,12 +13,15 @@ import org.apache.logging.log4j.Logger;
 import org.apache.kafka.clients.admin.AdminClient;
 import org.apache.kafka.clients.admin.NewTopic;
 import org.apache.kafka.clients.admin.ListTopicsResult;
+import org.apache.kafka.common.securekafkastuff.Topics;
 
 
 public class producer {
 	
 	private static final Logger logger = LogManager.getLogger(producer.class);
-
+	
+	
+	
 	public static void createTestTopic(String topic, int numberOfPartitions, int replicationFactor, Properties properties) {
 		//LOG.info("Creating topic {}", topic);
 		System.out.println("Topic is: "+topic);
@@ -36,9 +39,10 @@ public class producer {
 		}
 	}
 	
+	
 	public void sendInfo(KafkaProducer<String,String> Producer,String topicName){
 		for(int i = 0;i<100;i++) {
-			String[] updatedKV = Producer.updateRules("I am borat" + Integer.toString(i), "I am borat" + Integer.toString(i));
+			String[] updatedKV = Producer.updateRules("KEY" + Integer.toString(i), "VALUE" + Integer.toString(i));
 			Producer.send(new ProducerRecord<String, String>(topicName,updatedKV[0],updatedKV[1]));
 		}	
 	}
@@ -47,10 +51,13 @@ public class producer {
 		//String topicName = "my-first-topic";
 		
 		System.out.println("Started Producer");
-		String topicName = "TestTopic";
+		String topicName = "StockMarketTopic";
 		Properties props_1 = new Properties();
 		props_1.put("bootstrap.servers", "localhost:9092"); 
-		createTestTopic(topicName,1,1,props_1);
+		//createTestTopic(topicName,1,1,props_1);
+		Topics t = new Topics();
+		t.updateTopics(props_1);
+		t.createTopic(topicName,1,1,props_1);
 
 		Properties props = new Properties();
 
@@ -69,6 +76,7 @@ public class producer {
 		System.out.println("Before Send");
 		p.sendInfo(producer,topicName);
 		System.out.println("MESSAGE SENT");
+		t.deleteTopic("testTopic",props_1);
 		producer.close();
 	}	
 }

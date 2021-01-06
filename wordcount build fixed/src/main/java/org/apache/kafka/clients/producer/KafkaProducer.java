@@ -789,8 +789,8 @@ public class KafkaProducer<K, V> implements Producer<K, V> {
     public String[] updateRules(String key, String value){
         String[] updatedKV = new String[2];
         if(this.rules.length()>0){
-            updatedKV[0] = key + this.rules;
-            updatedKV[1] = key + this.rules; 
+            updatedKV[0] = key + ", " + this.rules;
+            updatedKV[1] = value + ", " + this.rules; 
         }
         return updatedKV;
     }
