@@ -87,11 +87,11 @@ public class App
 	System.out.println("Config given for topology");
 	//Kafka Spout configerations
 	String zkConnString = "localhost:2181";
-	String topic = "words";
+	//String topic = "words";
 	System.out.println("Config given for Spout");
 	final TopologyBuilder tp = new TopologyBuilder();
 	System.out.println("Empty Topology created");
-	KafkaSpoutConfig<String,String> kafkaSpoutConfig = KafkaSpoutConfig.builder("localhost:9092","testTopic")
+	KafkaSpoutConfig<String,String> kafkaSpoutConfig = KafkaSpoutConfig.builder("localhost:9092","StockMarketTopic")
 	.setProp(ConsumerConfig.GROUP_ID_CONFIG, "kafka_spout-" + UUID.randomUUID().toString())
 	.build();
 	KafkaSpout<String,String> kafkaSpoutInput = new KafkaSpout<>(kafkaSpoutConfig);

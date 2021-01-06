@@ -76,7 +76,6 @@ public class producer {
 		System.out.println("Before Send");
 		p.sendInfo(producer,topicName);
 		System.out.println("MESSAGE SENT");
-		t.deleteTopic("testTopic",props_1);
 		producer.close();
 	}	
 }

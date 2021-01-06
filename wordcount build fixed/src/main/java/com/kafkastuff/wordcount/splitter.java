@@ -11,6 +11,11 @@ import org.apache.storm.tuple.Values;
 import java.util.HashMap;
 import java.util.Map;
 
+import java.io.File;
+import java.io.IOException;
+import java.io.PrintStream;
+import java.io.FileNotFoundException;
+
 public class splitter extends BaseRichBolt {
 
 	OutputCollector collector;
@@ -21,10 +26,20 @@ public class splitter extends BaseRichBolt {
 	}
 
 	@Override
-	public void execute(Tuple input) {
+	public void execute(Tuple input){
 		String sentence = input.getValue(4).toString();
 		//System.out.println("Sentence : "+input.getValue(4));
-		
+		/*
+		try{
+			File file = new File("
+			output.txt");
+			PrintStream stream = new PrintStream(file);
+			System.setOut(stream);
+		}
+		catch (FileNotFoundException ex){
+			System.out.println("File messup");
+		}
+		*/
 		if (sentence != null) {
 			System.out.println("Sentence: " + sentence);
 			String[] wordArray = sentence.split(" ");
